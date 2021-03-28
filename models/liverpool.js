@@ -14,10 +14,12 @@ const reviewSchema = new Schema({
 });
 
 const liverpoolSchema = new Schema({
+  playerNo: String,
   playerName: String,
   age: Number,
   position: String,
   nationalTeam: String,
+  img: String,
   reviews: [reviewSchema],
 }, {
   timestamps: true,

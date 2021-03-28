@@ -12,13 +12,13 @@
 
 <body>
     <%- include('../partials/header') %>
-        <% console.log(data.liverpools); %>
+        <% console.log(liverpools); %>
             <div class="container">
                 <div class="row">
-                    <% data.liverpools.forEach(function(p) {%>
+                    <% liverpools.forEach(function(p) {%>
                         <div class="col-sm border border-danger">
                             <div class="player-image">
-                                <a href="/liverpools/<%=p.playerNo%>">
+                                <a href="/liverpools/<%=p._id%>">
                                     <img src="<%=p.img%>" alt="">
                                 </a>
                             </div>

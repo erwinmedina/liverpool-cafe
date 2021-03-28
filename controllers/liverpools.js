@@ -4,6 +4,7 @@ const data = require("../data");
 module.exports = {
   index,
   show,
+  create,
 };
 
 function index(req, res) {
@@ -19,6 +20,15 @@ function show(req, res) {
       })
   })
 };
+
+function create(req, res) {
+  if (req.body.departs === "") delete req.body.departs;
+
+  Liverpool.create(req.body, function(err, liverpool) {
+    if (err) console.log(err);
+    res.redirect("/liverpools");
+  })
+}
 
 
 // function show(req, res) {

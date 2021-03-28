@@ -8,6 +8,7 @@ const data              = require("../data");
 /* GET users listing. */
 router.get('/', liverpoolsCtrl.index);
 router.get('/:id', liverpoolsCtrl.show);
+router.post('/', liverpoolsCtrl.create);
 
 
 module.exports = router;
