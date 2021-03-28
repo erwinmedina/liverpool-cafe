@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   background: url("https://wallpapercave.com/wp/wp1813550.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -27,22 +27,11 @@ h2 {
   -webkit-text-stroke: 1.5px white;
 }
 
-.navbar-brand {
-  font-size: 35px;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
 }
 
 .btn {
-  margin: 300px 15px;
-}
-
-.log {
-  color: white;
-}
-.log:hover {
-  color: red;
+  margin: 350px 15px 0 15px;
 }

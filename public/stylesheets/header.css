@@ -1,0 +1,10 @@
+.navbar-brand {
+  font-size: 35px;
+}
+
+.log {
+  color: white;
+}
+.log:hover {
+  color: red;
+}
