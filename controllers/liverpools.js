@@ -27,20 +27,6 @@ function create(req, res) {
   })
 }
 
-
-// function show(req, res) {
-//   Liverpool.findById(req.params.id)
-//   .populate('cast').exec(function(err, liverpool) {
-//     // Query for performers not already in this movie's cast array
-//     Performer.find(
-//       {_id: {$nin: movie.cast}},
-//       function(err, performers) {
-//         res.render('movies/show', { title: 'Movie Detail', movie, performers });
-//       }
-//     );
-//   });
-// }
-
 // function newMovie(req, res) {
 //   res.render('movies/new', { title: 'Add Movie' });
 // }

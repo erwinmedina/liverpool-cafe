@@ -77,11 +77,25 @@
                                 </span>
                             </div>
                         </div>
-                        </a>
+                        <% if (user) { %>
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="titles">Favorite: </span>
+                                </div>
+                                <div class="container">
+                                    <span class="details">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="favorite">
+                                            <label class="custom-control-label" for="favorite"></label>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <% } %>
+
                     </div>
                 </div>
             </div>
-
 
             <div class="container comments">
                 <div class="create-comment">

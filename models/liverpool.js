@@ -3,27 +3,27 @@ const Schema = mongoose.Schema;
 const data = require("../data");
 
 const commentSchema = new Schema({
-  content: String,
-  user: {
-    type: Schema.Types.ObjectId, 
-    ref : 'User',
-  },
-  userName: String,
-  userAvatar: String,
+  content     : String,
+  user        : {
+    type      : Schema.Types.ObjectId, 
+    ref       : 'User',
+              },
+  userName    : String,
+  userAvatar  : String,
 }, {
-  timestamps: true,
+  timestamps  : true,
 })
 
 const liverpoolSchema = new Schema({
-  playerNo: String,
-  playerName: String,
-  age: Number,
-  position: String,
-  nationalTeam: String,
-  img: String,
-  comments: [commentSchema],
+  playerNo      : String,
+  playerName    : String,
+  age           : Number,
+  position      : String,
+  nationalTeam  : String,
+  img           : String,
+  comments      : [commentSchema],
 }, {
-  timestamps: true,
+  timestamps    : true,
 })
 
 
