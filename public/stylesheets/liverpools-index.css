@@ -21,9 +21,21 @@ img {
   margin: 20px;
   border: solid black 1px;
   border-radius: 30px;
+  transition: 0.7s;
+}
+
+.player-image:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.player-image:hover + h3 {
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
 }
 
 h3 {
   color: red;
   text-align: center;
+  transition: 0.7s;
 }

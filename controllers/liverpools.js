@@ -1,5 +1,4 @@
 const Liverpool = require('../models/liverpool');
-const data = require("../data");
 
 module.exports = {
   index,
@@ -9,15 +8,13 @@ module.exports = {
 
 function index(req, res) {
   Liverpool.find({}, function(err, liverpools) {
-    res.render('liverpools/index', {liverpools, data});
+    res.render('liverpools/index', {liverpools});
   });
 }
 
 function show(req, res) {
   Liverpool.findById(req.params.id, function(err, liverpool) {
-      Liverpool.find({liverpool: liverpool._id}, function(err, liverpools) {
-          res.render('liverpools/show', {liverpool, data});
-      })
+        res.render('liverpools/show', {title: "Player Details", liverpool})
   })
 };
 
@@ -26,7 +23,7 @@ function create(req, res) {
 
   Liverpool.create(req.body, function(err, liverpool) {
     if (err) console.log(err);
-    res.redirect("/liverpools");
+    res.redirect("/liverpools", {liverpools});
   })
 }
 

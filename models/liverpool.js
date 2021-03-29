@@ -2,16 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const data = require("../data");
 
-
-const reviewSchema = new Schema({
+const commentSchema = new Schema({
   content: String,
-  rating: {type: Number, min: 1, max: 5, default: 5},
-  user: {type: Schema.Types.ObjectId, ref: 'User'},
+  user: {
+    type: Schema.Types.ObjectId, 
+    ref : 'User',
+  },
   userName: String,
-  userAvatar: String 
+  userAvatar: String,
 }, {
-  timestamps: true
-});
+  timestamps: true,
+})
 
 const liverpoolSchema = new Schema({
   playerNo: String,
@@ -20,7 +21,7 @@ const liverpoolSchema = new Schema({
   position: String,
   nationalTeam: String,
   img: String,
-  reviews: [reviewSchema],
+  comments: [commentSchema],
 }, {
   timestamps: true,
 })
