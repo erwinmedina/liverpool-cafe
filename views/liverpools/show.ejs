@@ -123,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="container comments">
+                <div class="container comments border">
                     <div class="create-comment">
                         <% if (user) { %>
                             <form class="comment-form" id="add-content-form" method="POST"
@@ -157,7 +157,7 @@
                                                 <td class="user-comment">
                                                     <%= c.content %>
                                                 </td>
-                                                <td>
+                                                <td class="user-delete">
                                                     <% if (user && user._id.equals(c.user)) { %>
                                                         <form action="/comments/<%= c._id %>?_method=DELETE"
                                                             method="POST">

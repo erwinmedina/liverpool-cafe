@@ -3,7 +3,6 @@ html {
 }
 
 body {
-  height: 100%;
   background: url("https://hdwallsource.com/img/2014/6/liverpool-fc-wallpaper-8890-9230-hd-wallpapers.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -19,7 +18,8 @@ body {
 }
 
 h1 {
-  width: 30vw;
+  margin-left: 40px;
+  width: 400px;
   text-align: center;
   -webkit-text-stroke: 1.5px white;
 }

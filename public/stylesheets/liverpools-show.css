@@ -34,6 +34,7 @@
 .comments {
   background: rgba(0, 178, 169, 0.6);
   flex-direction: column;
+  border-radius: 30px;
 }
 
 .create-comment {
@@ -102,4 +103,13 @@ span {
 
 th {
   text-align: center;
+}
+
+.username {
+}
+.user-comment {
+  border-left: solid rgba(255, 255, 255, 0.3) 1px;
+}
+.user-delete {
+  border-left: solid rgba(255, 255, 255, 0.3) 1px;
 }
