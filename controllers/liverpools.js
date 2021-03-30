@@ -4,6 +4,7 @@ module.exports = {
   index,
   show,
   create,
+  favorite,
 };
 
 function index(req, res) {
@@ -15,6 +16,11 @@ function index(req, res) {
 function show(req, res) {
   Liverpool.findById(req.params.id, function(err, liverpool) {
         res.render('liverpools/show', {title: "Player Details", liverpool})
+  })
+};
+function favorite(req, res) {
+  Liverpool.find({}, function(err, liverpools) {
+    res.render("liverpools/favorite", {liverpools});
   })
 };
 

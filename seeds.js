@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("./config/database");
 const Liverpool = require("./models/liverpool");
 const data = require("./data");

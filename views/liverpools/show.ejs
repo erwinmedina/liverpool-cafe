@@ -84,17 +84,37 @@
                                         <span class="titles">Favorite: </span>
                                     </div>
                                     <div class="container">
+                                        <%= console.log(user._id)%>
+                                            <% if (liverpool.favorite.length>0) { %>
+                                                <% liverpool.favorite.forEach(function(f) { %>
+                                                    <% if (!f.user===user._id) { %>
+                                                        <span class="details">
+                                                            <div class="custom-control custom-switch">
+                                                                <form id="add-favorite-form"
+                                                                    action="/liverpools/<%= liverpool._id %>/favorite"
+                                                                    method="POST">
+                                                                    <button class="btn btn-sm btn-success" type="submit"
+                                                                        name="favorite">Add
+                                                                        Favorite</button>
+                                                                </form>
+                                                            </div>
+                                                        </span>
+                                                        <%}%>
+                                                            <% }) %>
 
-                                        <span class="details">
-                                            <div class="custom-control custom-switch">
-                                                <form id="add-favorite-form"
-                                                    action="/liverpools/<%= liverpool._id %>/favorite" method="POST">
-                                                    <button class="btn btn-sm btn-success" type="submit"
-                                                        name="favorite">Add Favorite</button>
-                                                </form>
-                                            </div>
-                                        </span>
-
+                                                                <% } else { %>
+                                                                    <span class="details">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <form id="add-favorite-form"
+                                                                                action="/liverpools/<%= liverpool._id %>/favorite"
+                                                                                method="POST">
+                                                                                <button class="btn btn-sm btn-success"
+                                                                                    type="submit" name="favorite">Add
+                                                                                    Favorite</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </span>
+                                                                    <% } %>
                                     </div>
                                 </div>
                                 <% } %>
