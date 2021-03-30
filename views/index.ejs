@@ -12,9 +12,10 @@
 <body>
   <%- include('./partials/header') %>
 
-
-    <h1>Welcome to Liverpool Cafe!</h1>
-    <h2>A place to relax, <br>have a cup of tea, <br>and comment on your favorite players</h2>
+    <div class="word">
+      <h1>Welcome to Liverpool Cafe!</h1>
+      <h2>A place to relax, <br>have a cup of tea, <br>and comment on your favorite players</h2>
+    </div>
     <div class="container button-container">
       <% if (user) { %>
         <a href="/favorite/" class="btn btn-info">Favorite Player</a>

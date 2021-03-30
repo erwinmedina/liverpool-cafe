@@ -2,10 +2,14 @@
   /* background: rgba(200, 16, 46, 0.4); */
   border-radius: 50px;
   margin: 20px;
-  padding: 100px;
+  padding: 80px;
   height: 90vh;
   display: flex;
   flex-direction: row;
+}
+
+.two-elements {
+  max-height: 60vh;
 }
 
 .player-card {
@@ -14,6 +18,13 @@
   width: 450px;
   background: rgba(200, 16, 46, 0.2);
   background: rgba(0, 178, 169, 0.8);
+}
+
+.player-image {
+  margin: 20px 20px 0 20px;
+  border: solid black 1px;
+  border-radius: 30px;
+  transition: 0.7s;
 }
 
 .player-image {

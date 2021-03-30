@@ -1,3 +1,12 @@
+body {
+  background: url(https://fcwallpaper.com/wp-content/uploads/2019/01/Liverpool-For-Mac-Wallpaper.jpg);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
 .border {
   padding: 0;
   display: flex;
@@ -25,13 +34,13 @@ img {
 }
 
 .player-image:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .player-image:hover + h3 {
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
 }
 
 h3 {
