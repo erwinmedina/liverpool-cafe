@@ -31,6 +31,10 @@ const liverpoolSchema = new Schema({
   img           : String,
   favorite      : [favoriteSchema],
   comments      : [commentSchema],
+  user          : {
+        type: Schema.Types.ObjectId,
+        ref : 'User',
+  }
 }, {
   timestamps    : true,
 })
