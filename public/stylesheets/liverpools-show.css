@@ -3,7 +3,7 @@
   border-radius: 50px;
   margin: 20px;
   padding: 80px;
-  height: 90vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
 }
@@ -105,11 +105,13 @@ th {
   text-align: center;
 }
 
-.username {
-}
 .user-comment {
   border-left: solid rgba(255, 255, 255, 0.3) 1px;
 }
 .user-delete {
   border-left: solid rgba(255, 255, 255, 0.3) 1px;
+}
+
+.comment-row {
+  background: rgba(255, 255, 255, 0.3);
 }
