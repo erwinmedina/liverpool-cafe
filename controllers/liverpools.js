@@ -19,13 +19,22 @@ function show(req, res) {
 };
 
 function create(req, res) {
-  if (req.body.departs === "") delete req.body.departs;
+  Liverpool.find({}, function(err, liverpools) {
+    res.render('index', {liverpools});
+  });
 
-  Liverpool.create(req.body, function(err, liverpool) {
-    if (err) console.log(err);
-    res.redirect("/liverpools", {liverpools});
-  })
+
+  // if (req.body.departs === "") delete req.body.departs;
+
+  // Liverpool.create(req.body, function(err, liverpool) {
+  //   if (err) console.log(err);
+  //   res.redirect("/liverpools", {liverpools});
 }
+
+// function favorite(req, res) {
+//   Liverpool.findOne({})
+// }
+
 
 // function newMovie(req, res) {
 //   res.render('movies/new', { title: 'Add Movie' });

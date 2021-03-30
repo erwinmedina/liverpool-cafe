@@ -10,143 +10,110 @@
     <link rel='stylesheet' href='/stylesheets/liverpools-show.css' />
 
 </head>
+<%= console.log(liverpool) %>
 
-<body>
-    <%- include('../partials/header') %>
-        <div class="main-container border">
-            <div class="container">
-                <div class="row">
-                    <div class="player-card col-sm border">
-                        <div class="player-image">
-                            <a href="/liverpools/<%=liverpool._id%>">
-                                <img src="<%=liverpool.img%>" alt="">
-                            </a>
-                        </div>
+    <body>
+        <%- include('../partials/header') %>
+            <div class="main-container border">
+                <div class="container">
+                    <div class="row">
+                        <div class="player-card col-sm border">
+                            <div class="player-image">
+                                <a href="/liverpools/<%=liverpool._id%>">
+                                    <img src="<%=liverpool.img%>" alt="">
+                                </a>
+                            </div>
 
-                        <div class="player-details container">
-                            <div class="container">
-                                <span class="titles">Name: </span>
-                            </div>
-                            <div class="container">
-                                <span class="details">
-                                    <%=liverpool.playerName%><br>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="player-details container">
-                            <div class="container">
-                                <span class="titles">Jersey #: </span>
-                            </div>
-                            <div class="container">
-                                <span class="details">
-                                    <%=liverpool.playerNo%><br>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="player-details container">
-                            <div class="container">
-                                <span class="titles">Age: </span>
-                            </div>
-                            <div class="container">
-                                <span class="details">
-                                    <%=liverpool.age%><br>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="player-details container">
-                            <div class="container">
-                                <span class="titles">Position: </span>
-                            </div>
-                            <div class="container">
-                                <span class="details">
-                                    <%=liverpool.position%><br>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="player-details container">
-                            <div class="container">
-                                <span class="titles">National Team: </span>
-                            </div>
-                            <div class="container">
-                                <span class="details">
-                                    <%=liverpool.nationalTeam%><br>
-                                </span>
-                            </div>
-                        </div>
-                        <% if (user) { %>
                             <div class="player-details container">
                                 <div class="container">
-                                    <span class="titles">Favorite: </span>
+                                    <span class="titles">Name: </span>
                                 </div>
                                 <div class="container">
                                     <span class="details">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="favorite">
-                                            <label class="custom-control-label" for="favorite"></label>
-                                        </div>
+                                        <%=liverpool.playerName%><br>
                                     </span>
                                 </div>
                             </div>
-                            <% } %>
 
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="titles">Jersey #: </span>
+                                </div>
+                                <div class="container">
+                                    <span class="details">
+                                        <%=liverpool.playerNo%><br>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="titles">Age: </span>
+                                </div>
+                                <div class="container">
+                                    <span class="details">
+                                        <%=liverpool.age%><br>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="titles">Position: </span>
+                                </div>
+                                <div class="container">
+                                    <span class="details">
+                                        <%=liverpool.position%><br>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="titles">National Team: </span>
+                                </div>
+                                <div class="container">
+                                    <span class="details">
+                                        <%=liverpool.nationalTeam%><br>
+                                    </span>
+                                </div>
+                            </div>
+                            <% if (user) { %>
+                                <div class="player-details container">
+                                    <div class="container">
+                                        <span class="titles">Favorite: </span>
+                                    </div>
+                                    <div class="container">
+
+                                        <form action="/liverpools/<%=liverpool._id%>/create" method="POST">
+                                            <span class="details">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" name="favorite" class="custom-control-input"
+                                                        id="favorite">
+                                                    <label class="custom-control-label" name="favorite"
+                                                        for="favorite"></label>
+                                                    <input class="btn btn-sm btn-success" type="submit" value="Submit">
+                                                </div>
+                                            </span>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <% } %>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="container comments">
-                <div class="create-comment">
-                    <% if (user) { %>
-                        <form class="comment-form" id="add-content-form" method="POST"
-                            action="/liverpools/<%= liverpool._id %>/comments">
-                            <textarea placeholder=" your comment.." class="form-control" name="content"></textarea>
-                            <input class="btn btn-primary" type="submit" value="Comment">
-                        </form>
-                </div>
-                <div class="user-comments">
-                    <% if (liverpool.comments.length) { %>
-
-                        <div class="comments-box container overflow-auto">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th></th>
-                                        <th>User</th>
-                                        <th>Comment</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="overflow-auto">
-                                    <% liverpool.comments.forEach(function(c) { %>
-                                        <tr>
-                                            <td class="avatar">
-                                                <img class="avatar-image" src="<%= c.userAvatar %>" alt="">
-                                            </td>
-                                            <td class="username">
-                                                <%= c.userName %>
-                                            </td>
-                                            <td class="user-comment">
-                                                <%= c.content %>
-                                            </td>
-                                            <td>
-                                                <% if (user && user._id.equals(c.user)) { %>
-                                                    <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                                                        <button class="btn btn-sm btn-danger" type="submit">X</button>
-                                                    </form>
-                                                    <% } %>
-                                            </td>
-                                        </tr>
-                                        <% }); %>
-                                </tbody>
-                            </table>
-                        </div>
-                        <% } %>
-                            <!-- // THIS IS WHERE ADDITIONAL NEWLY CREATED COMMENTS WILL GO // -->
-                </div>
-                <% } else { %>
+                <div class="container comments">
+                    <div class="create-comment">
+                        <% if (user) { %>
+                            <form class="comment-form" id="add-content-form" method="POST"
+                                action="/liverpools/<%= liverpool._id %>/comments">
+                                <textarea placeholder=" your comment.." class="form-control" name="content"></textarea>
+                                <input class="btn btn-primary" type="submit" value="Comment">
+                            </form>
+                    </div>
                     <div class="user-comments">
                         <% if (liverpool.comments.length) { %>
 
@@ -189,10 +156,53 @@
                             <% } %>
                                 <!-- // THIS IS WHERE ADDITIONAL NEWLY CREATED COMMENTS WILL GO // -->
                     </div>
-                    <% } %>
-            </div>
+                    <% } else { %>
+                        <div class="user-comments">
+                            <% if (liverpool.comments.length) { %>
+
+                                <div class="comments-box container overflow-auto">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr class="table-primary">
+                                                <th></th>
+                                                <th>User</th>
+                                                <th>Comment</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="overflow-auto">
+                                            <% liverpool.comments.forEach(function(c) { %>
+                                                <tr>
+                                                    <td class="avatar">
+                                                        <img class="avatar-image" src="<%= c.userAvatar %>" alt="">
+                                                    </td>
+                                                    <td class="username">
+                                                        <%= c.userName %>
+                                                    </td>
+                                                    <td class="user-comment">
+                                                        <%= c.content %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (user && user._id.equals(c.user)) { %>
+                                                            <form action="/comments/<%= c._id %>?_method=DELETE"
+                                                                method="POST">
+                                                                <button class="btn btn-sm btn-danger"
+                                                                    type="submit">X</button>
+                                                            </form>
+                                                            <% } %>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <% } %>
+                                    <!-- // THIS IS WHERE ADDITIONAL NEWLY CREATED COMMENTS WILL GO // -->
+                        </div>
+                        <% } %>
+                </div>
 
 
-</body>
+    </body>
 
 </html>

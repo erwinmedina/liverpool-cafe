@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const data = require("../data");
 
 const commentSchema = new Schema({
   content     : String,
@@ -14,6 +13,13 @@ const commentSchema = new Schema({
   timestamps  : true,
 })
 
+const favoriteSchema = new Schema({
+  user : {
+    type: Schema.Types.ObjectId,
+    ref : 'User',
+  }
+})
+
 const liverpoolSchema = new Schema({
   playerNo      : String,
   playerName    : String,
@@ -21,11 +27,10 @@ const liverpoolSchema = new Schema({
   position      : String,
   nationalTeam  : String,
   img           : String,
+  favorite     : [favoriteSchema],
   comments      : [commentSchema],
 }, {
   timestamps    : true,
 })
-
-
 
 module.exports = mongoose.model('Liverpool', liverpoolSchema);
