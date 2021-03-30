@@ -19,9 +19,23 @@ function show(req, res) {
 };
 
 function create(req, res) {
-  Liverpool.find({}, function(err, liverpools) {
-    res.render('index', {liverpools});
-  });
+  console.log("FUCK");
+    Liverpool.findById(req.params.id, function(err, liverpool) {
+        req.body.user = req.user._id;
+
+        liverpool.favorite.push(req.body);
+        liverpool.save(function(err) {
+            res.redirect(`/liverpools/${liverpool._id}`);
+        });
+    });
+}
+
+
+
+// function create(req, res) {
+//   Liverpool.find({}, function(err, liverpools) {
+//     res.render('index', {liverpools});
+//   });
 
 
   // if (req.body.departs === "") delete req.body.departs;
@@ -29,7 +43,7 @@ function create(req, res) {
   // Liverpool.create(req.body, function(err, liverpool) {
   //   if (err) console.log(err);
   //   res.redirect("/liverpools", {liverpools});
-}
+// }
 
 // function favorite(req, res) {
 //   Liverpool.findOne({})

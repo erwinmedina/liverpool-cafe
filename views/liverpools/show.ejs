@@ -85,17 +85,15 @@
                                     </div>
                                     <div class="container">
 
-                                        <form action="/liverpools/<%=liverpool._id%>/create" method="POST">
-                                            <span class="details">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" name="favorite" class="custom-control-input"
-                                                        id="favorite">
-                                                    <label class="custom-control-label" name="favorite"
-                                                        for="favorite"></label>
-                                                    <input class="btn btn-sm btn-success" type="submit" value="Submit">
-                                                </div>
-                                            </span>
-                                        </form>
+                                        <span class="details">
+                                            <div class="custom-control custom-switch">
+                                                <form id="add-favorite-form"
+                                                    action="/liverpools/<%= liverpool._id %>/favorite" method="POST">
+                                                    <button class="btn btn-sm btn-success" type="submit" name="favorite"
+                                                        value="<%=liverpool.favorite%>">Add Favorite</button>
+                                                </form>
+                                            </div>
+                                        </span>
 
                                     </div>
                                 </div>

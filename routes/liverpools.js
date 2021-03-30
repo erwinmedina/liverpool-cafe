@@ -7,7 +7,7 @@ const isLoggedIn        = require('../config/auth');
 /* GET users listing. */
 router.get('/', liverpoolsCtrl.index);
 router.get('/:id', liverpoolsCtrl.show);
-router.post('/', liverpoolsCtrl.create);
+router.post('/liverpools/:id/favorite', liverpoolsCtrl.create);
 
 
 module.exports = router;
