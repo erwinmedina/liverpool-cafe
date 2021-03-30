@@ -18,6 +18,8 @@ const favoriteSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref : 'User',
   }
+}, {
+  timestamps: true,
 })
 
 const liverpoolSchema = new Schema({
@@ -27,7 +29,7 @@ const liverpoolSchema = new Schema({
   position      : String,
   nationalTeam  : String,
   img           : String,
-  favorite     : [favoriteSchema],
+  favorite      : [favoriteSchema],
   comments      : [commentSchema],
 }, {
   timestamps    : true,
