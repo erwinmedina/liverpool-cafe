@@ -123,3 +123,25 @@ th {
 .player-name {
   font-size: 24px;
 }
+
+.datetime {
+  font-size: 10px;
+}
+.username {
+  color: white;
+  font-weight: bold;
+}
+.user,
+.avatar {
+  width: 10%;
+}
+
+.deleteEdit {
+  width: 20%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.comment-row td {
+  height: 50px;
+}

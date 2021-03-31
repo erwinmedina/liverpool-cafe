@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/views-index.css' />
     <link rel='stylesheet' href='/stylesheets/liverpools-index.css' />
     <link rel='stylesheet' href='/stylesheets/liverpools-show.css' />
+    <script defer type="text/javascript" src="/javascripts/editComments.js"></script>
 
 </head>
 <%= console.log(liverpool) %>
@@ -153,42 +154,45 @@
                                             <th>User</th>
                                             <th>Comment</th>
                                             <th>Update</th>
-                                            <th></th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="overflow-auto">
                                         <% liverpool.comments.forEach(function(c) { %>
                                             <tr class="comment-row">
-                                                <td class="avatar">
+                                                <td class="h-25 avatar">
                                                     <img class="avatar-image" src="<%= c.userAvatar %>" alt="">
                                                 </td>
-                                                <td class="username">
-                                                    <%= c.userName %>
+                                                <td class="user">
+                                                    <p class="username">
+                                                        <%= c.userName.split(" ")[0] %>
+                                                    </p>
+                                                    <p class=" datetime">
+                                                            <%= c.createdAt.toLocaleString() %>
+                                                    </p>
                                                 </td>
                                                 <td class="user-comment">
-                                                    <%= c.content %>
+                                                    <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                                                        <p id="userComment">
+                                                            <%= c.content %>
+                                                        </p>
+                                                    </form>
                                                 </td>
 
-                                                <td class="user-delete">
+                                                <td class="deleteEdit">
                                                     <% if (user && user._id.equals(c.user)) { %>
-                                                        <form action="/comments/<%= c._id %>?_method=DELETE"
+                                                        <form id="deleteForm"
+                                                            action="/comments/<%= c._id %>?_method=DELETE"
                                                             method="POST">
                                                             <button class="btn btn-sm btn-danger"
                                                                 type="submit">X</button>
                                                         </form>
+                                                        <button class="btn btn-sm btn-primary edit"
+                                                            id="edit">Edit</button>
                                                         <% } %>
                                                 </td>
-                                                <td class="user-edit">
-                                                    <% if (user && user._id.equals(c.user)) { %>
-                                                        <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
-                                                            <button class="btn btn-sm btn-primary"
-                                                                type="submit">Edit</button>
-                                                            <textarea placeholder="update comment.."
-                                                                class="form-control" name="content"></textarea>
-                                                        </form>
-                                                        <% } %>
-                                                </td>
+
+
+
                                             </tr>
                                             <% }); %>
                                     </tbody>
