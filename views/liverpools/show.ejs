@@ -18,6 +18,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="player-card col-sm border">
+                            <div class="player-details container">
+                                <div class="container">
+                                    <span class="player-name details">
+                                        <%=liverpool.playerName%><br>
+                                    </span>
+                                </div>
+                            </div>
+
                             <div class="player-image">
                                 <a href="/liverpools/<%=liverpool._id%>">
                                     <img src="<%=liverpool.img%>" alt="">
@@ -26,20 +34,9 @@
 
                             <div class="player-details container">
                                 <div class="container">
-                                    <span class="titles">Name: </span>
-                                </div>
-                                <div class="container">
-                                    <span class="details">
-                                        <%=liverpool.playerName%><br>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="player-details container">
-                                <div class="container">
                                     <span class="titles">Jersey #: </span>
                                 </div>
-                                <div class="container">
+                                <div class="details-container container">
                                     <span class="details">
                                         <%=liverpool.playerNo%><br>
                                     </span>
@@ -50,7 +47,7 @@
                                 <div class="container">
                                     <span class="titles">Age: </span>
                                 </div>
-                                <div class="container">
+                                <div class="details-container container">
                                     <span class="details">
                                         <%=liverpool.age%><br>
                                     </span>
@@ -61,7 +58,7 @@
                                 <div class="container">
                                     <span class="titles">Position: </span>
                                 </div>
-                                <div class="container">
+                                <div class="details-container container">
                                     <span class="details">
                                         <%=liverpool.position%><br>
                                     </span>
@@ -69,10 +66,10 @@
                             </div>
 
                             <div class="player-details container">
-                                <div class="container">
+                                <div class="title.container container">
                                     <span class="titles">National Team: </span>
                                 </div>
-                                <div class="container">
+                                <div class="details-container container">
                                     <span class="details">
                                         <%=liverpool.nationalTeam%><br>
                                     </span>
@@ -80,57 +77,54 @@
                             </div>
                             <% if (user) { %>
                                 <div class="player-details container">
-                                    <div class="container">
+                                    <div class="title.container container">
                                         <span class="titles">Favorite: </span>
                                     </div>
-                                    <div class="container">
-                                        <%= console.log(user._id)%>
-                                            <% if (liverpool.favorite.length>0) { %>
-                                                <% liverpool.favorite.forEach(function(f) { %>
-                                                    <% if (!f.user.equals(user._id)) { %>
+                                    <div class="details-container container">
+                                        <% if (liverpool.favorite.length>0) { %>
+                                            <% liverpool.favorite.forEach(function(f) { %>
+                                                <% if (f.user.equals(!user._id)) { %>
+                                                    <span class="details">
+                                                        <div class="custom-control custom-switch">
+                                                            <form id="add-favorite-form"
+                                                                action="/liverpools/<%= liverpool._id %>/favorite"
+                                                                method="POST">
+                                                                <button class="btn btn-sm btn-success" type="submit"
+                                                                    name="favorite">Add
+                                                                    Favorite</button>
+                                                            </form>
+                                                        </div>
+                                                    </span>
+                                                    <%} else { %>
                                                         <span class="details">
                                                             <div class="custom-control custom-switch">
-                                                                <form id="add-favorite-form"
-                                                                    action="/liverpools/<%= liverpool._id %>/favorite"
+                                                                <form id="delete-favorite-form"
+                                                                    action="/liverpools/<%= liverpool._id %>?_method=DELETE"
                                                                     method="POST">
-                                                                    <button class="btn btn-sm btn-success" type="submit"
-                                                                        name="favorite">Add
+                                                                    <button class="btn btn-sm btn-danger" type="submit"
+                                                                        name="favorite">Remove
                                                                         Favorite</button>
                                                                 </form>
                                                             </div>
                                                         </span>
-                                                        <%} else { %>
-                                                            <span class="details">
-                                                                <div class="custom-control custom-switch">
-                                                                    <form id="delete-favorite-form"
-                                                                        action="/liverpools/<%= liverpool._id %>/favorite?_method=DELETE"
-                                                                        method="POST">
-                                                                        <button class="btn btn-sm btn-danger"
-                                                                            type="submit" name="favorite">Remove
-                                                                            Favorite</button>
-                                                                    </form>
-                                                                </div>
-                                                            </span>
-                                                            <% } %>
+                                                        <% } %>
 
 
-                                                                <% }) %>
+                                                            <% }) %>
 
-                                                                    <% } else { %>
-                                                                        <span class="details">
-                                                                            <div class="custom-control custom-switch">
-                                                                                <form id="add-favorite-form"
-                                                                                    action="/liverpools/<%= liverpool._id %>/favorite"
-                                                                                    method="POST">
-                                                                                    <button
-                                                                                        class="btn btn-sm btn-success"
-                                                                                        type="submit"
-                                                                                        name="favorite">Add
-                                                                                        Favorite</button>
-                                                                                </form>
-                                                                            </div>
-                                                                        </span>
-                                                                        <% } %>
+                                                                <% } else { %>
+                                                                    <span class="details">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <form id="add-favorite-form"
+                                                                                action="/liverpools/<%= liverpool._id %>/favorite"
+                                                                                method="POST">
+                                                                                <button class="btn btn-sm btn-success"
+                                                                                    type="submit" name="favorite">Add
+                                                                                    Favorite</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </span>
+                                                                    <% } %>
                                     </div>
                                 </div>
                                 <% } %>
@@ -158,6 +152,8 @@
                                             <th></th>
                                             <th>User</th>
                                             <th>Comment</th>
+                                            <th>Update</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -173,12 +169,23 @@
                                                 <td class="user-comment">
                                                     <%= c.content %>
                                                 </td>
+
                                                 <td class="user-delete">
                                                     <% if (user && user._id.equals(c.user)) { %>
                                                         <form action="/comments/<%= c._id %>?_method=DELETE"
                                                             method="POST">
                                                             <button class="btn btn-sm btn-danger"
                                                                 type="submit">X</button>
+                                                        </form>
+                                                        <% } %>
+                                                </td>
+                                                <td class="user-edit">
+                                                    <% if (user && user._id.equals(c.user)) { %>
+                                                        <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                                                            <button class="btn btn-sm btn-primary"
+                                                                type="submit">Edit</button>
+                                                            <textarea placeholder="update comment.."
+                                                                class="form-control" name="content"></textarea>
                                                         </form>
                                                         <% } %>
                                                 </td>
@@ -216,15 +223,7 @@
                                                     <td class="user-comment">
                                                         <%= c.content %>
                                                     </td>
-                                                    <td>
-                                                        <% if (user && user._id.equals(c.user)) { %>
-                                                            <form action="/comments/<%= c._id %>?_method=DELETE"
-                                                                method="POST">
-                                                                <button class="btn btn-sm btn-danger"
-                                                                    type="submit">X</button>
-                                                            </form>
-                                                            <% } %>
-                                                    </td>
+
                                                 </tr>
                                                 <% }); %>
                                         </tbody>

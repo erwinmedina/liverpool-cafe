@@ -5,7 +5,7 @@ module.exports = {
   show,
   create,
   favorite,
-  // delete: deleteFavorite,
+  delete: deleteFavorite,
 };
 
 // shows the landing page //
@@ -31,21 +31,37 @@ function favorite(req, res) {
 
 // creates the favorites //
 function create(req, res) {
-    Liverpool.findById(req.params.id, function(err, liverpool) {
-        req.body.user = req.user._id;
-
-        liverpool.favorite.push(req.body);
-        liverpool.save(function(err) {
+  Liverpool.findById(req.params.id, function(err, liverpool) {
+    req.body.user = req.user._id;
+    
+    liverpool.favorite.push(req.body);
+    liverpool.save(function(err) {
             res.redirect(`/liverpools/${liverpool._id}`);
         });
-    });
+      });
+    }
+    
+    // removes item from favorite //
+function deleteFavorite(req, res) {
+  console.log("FUCK");
+
+  Liverpool.findByIdAndDelete(req.params.id, function(err, deletedLiverpool) {
+    if (err) console.log(err)
+  })
+  res.redirect('/liverpools');
 }
+//   Liverpool.findOne({'favorites._id': req.params.id}).then(function(liverpool) {
+//     const element = liverpool.favorites.id(req.params.id);
+//     element.remove();
+//     liverpool.save().then(function() {
+//       res.redirect(`/liverpools/${liverpool._id}`);
+//     }).catch(function(err) {
+//       return next(err);
+//     })
+//   })
+// }
 
-// removes item from favorite //
-// function deleteFavorite(req, res) {
 //   Liverpool.findById(req.params.id, function(err, liverpool) {
-//       req.body.user = req.user._id;
-
 //       liverpool.favorite.shift(req.body);
 //       liverpool.save(function(err) {
 //           res.redirect(`/liverpools/${liverpool._id}`);

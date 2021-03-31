@@ -3,6 +3,7 @@ const Liverpool = require("../models/liverpool");
 module.exports = {
     create,
     delete: deleteComment,
+    update,
 }
 
 function create(req, res) {
@@ -30,4 +31,16 @@ function deleteComment(req, res, next) {
             return next(err);
         })
     })
+}
+
+function update(req, res) {
+    // console.log(Liverpool.comments);
+    Liverpool.findOne({'comments._id': req.params.id}, function(err, liverpool) {
+        let comment = liverpool.comments.id(req.params.id);
+        Object.assign(comment, req.body);
+        liverpool.save(function(err) {
+            res.redirect(`/liverpools/${liverpool._id}`)
+        })
+    })
+
 }
