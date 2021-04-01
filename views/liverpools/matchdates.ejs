@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Liverpool Cafe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/views-index.css' />
+    <link rel='stylesheet' href='/stylesheets/liverpools-index.css' />
+    <link rel='stylesheet' href='/stylesheets/liverpools-match.css' />
+
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <% matchdates.forEach(function(m) { %>
+            <% console.log(matchdates) %>
+                <div class="main-container container">
+                    <div class="container matchday">
+                        MATCHDAY <%= m.matchday %>
+                    </div>
+                    <div class="container teaminfo">
+                        <div class="container team1 teamElement">
+                            <%= m.team1 %>
+                        </div>
+                        <div class="container score1 teamElement">
+                            <%= m.score1 %>
+                        </div>
+                        <div class="container vs teamElement">
+                            vs
+                        </div>
+                        <div class="container score2 teamElement">
+                            <%= m.score2 %>
+                        </div>
+                        <div class="container team2 teamElement">
+                            <%= m.team2 %>
+                        </div>
+                    </div>
+
+                    <div class="container date">
+                        <%= m.date %>
+                    </div>
+                </div>
+                <% }) %>
+
+</body>
+
+</html>

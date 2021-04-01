@@ -1,4 +1,5 @@
 const Liverpool = require('../models/liverpool');
+const Matchdate = require('../models/matchdate');
 
 module.exports = {
   index,
@@ -6,6 +7,7 @@ module.exports = {
   create,
   favorite,
   delete: deleteFavorite,
+  matchdates,
 };
 
 // shows the landing page //
@@ -20,6 +22,13 @@ function show(req, res) {
   Liverpool.findById(req.params.id, function(err, liverpool) {
         res.render('liverpools/show', {title: "Player Details", liverpool})
   })
+};
+
+// shows the matchdates //
+function matchdates(req, res) {
+  Matchdate.find({}, function(err, matchdates) {
+    res.render('liverpools/matchdates', {matchdates});
+  });
 };
 
 // renders the favorite page //
@@ -58,11 +67,3 @@ function deleteFavorite(req, res) {
     })
   })
 }
-
-
-  // Liverpool.findById(req.params.id, function(err, liverpool) {
-  //   liverpool.favorite.remove(req.params.id);
-  //   liverpool.save(function(err) {
-  //     res.redirect(`/liverpools/${liverpool._id}`);
-  //   })
-  // })

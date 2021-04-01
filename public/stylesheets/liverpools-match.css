@@ -1,0 +1,36 @@
+body {
+  height: 100vh;
+  color: white;
+}
+.main-container {
+  background: rgba(200, 16, 46, 0.5);
+  border: solid 1px white;
+  border-radius: 30px;
+  margin-top: 30px;
+  height: 150px;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.matchday {
+  height: 20px;
+}
+
+.teaminfo {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 65%;
+}
+
+.teamElement {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date {
+  text-align: center;
+}
