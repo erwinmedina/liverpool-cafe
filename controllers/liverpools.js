@@ -43,65 +43,26 @@ function create(req, res) {
     
     // removes item from favorite //
 function deleteFavorite(req, res) {
-  console.log("FUCK");
-
-  Liverpool.findByIdAndDelete(req.params.id, function(err, deletedLiverpool) {
-    if (err) console.log(err)
+  Liverpool.findById(req.params.id).then(function(liverpool) {
+    
+    for (let i = 0; i < liverpool.favorite.length; i++) {
+      if (liverpool.favorite[i].user.equals(req.user._id)) {
+        liverpool.favorite[i].remove(req.user._id);
+      }
+    }
+    
+    liverpool.save().then(function() {
+      res.redirect("/liverpools");
+    }).catch(function (err) {
+      return next(err)
+    })
   })
-  res.redirect('/liverpools');
 }
-//   Liverpool.findOne({'favorites._id': req.params.id}).then(function(liverpool) {
-//     const element = liverpool.favorites.id(req.params.id);
-//     element.remove();
-//     liverpool.save().then(function() {
-//       res.redirect(`/liverpools/${liverpool._id}`);
-//     }).catch(function(err) {
-//       return next(err);
-//     })
-//   })
-// }
-
-//   Liverpool.findById(req.params.id, function(err, liverpool) {
-//       liverpool.favorite.shift(req.body);
-//       liverpool.save(function(err) {
-//           res.redirect(`/liverpools/${liverpool._id}`);
-//       });
-//   });
-// }
 
 
-// function create(req, res) {
-//   Liverpool.find({}, function(err, liverpools) {
-//     res.render('index', {liverpools});
-//   });
-
-
-  // if (req.body.departs === "") delete req.body.departs;
-
-  // Liverpool.create(req.body, function(err, liverpool) {
-  //   if (err) console.log(err);
-  //   res.redirect("/liverpools", {liverpools});
-// }
-
-// function favorite(req, res) {
-//   Liverpool.findOne({})
-// }
-
-
-// function newMovie(req, res) {
-//   res.render('movies/new', { title: 'Add Movie' });
-// }
-
-// function create(req, res) {
-//   // convert nowShowing's checkbox of nothing or "on" to boolean
-//   req.body.nowShowing = !!req.body.nowShowing;
-//   for (let key in req.body) {
-//     if (req.body[key] === '') delete req.body[key];
-//   }
-//   const movie = new Movie(req.body);
-//   movie.save(function(err) {
-//     if (err) return res.redirect('/movies/new');
-//     console.log(movie);
-//     res.redirect(`/movies/${movie._id}`);
-//   });
-// }
+  // Liverpool.findById(req.params.id, function(err, liverpool) {
+  //   liverpool.favorite.remove(req.params.id);
+  //   liverpool.save(function(err) {
+  //     res.redirect(`/liverpools/${liverpool._id}`);
+  //   })
+  // })
