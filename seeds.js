@@ -11,9 +11,6 @@ Liverpool.deleteMany({})
         console.log(results);
         return Liverpool.create(data.liverpools);
     })
-    .then(function() {
-        process.exit();
-    });
 
 Matchdate.deleteMany({})
     .then(function(results) {
@@ -23,5 +20,3 @@ Matchdate.deleteMany({})
     .then(function() {
         process.exit();
     });
-
-

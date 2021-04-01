@@ -8,7 +8,7 @@ const matchdateSchema = new Schema({
     score2  : String,
     team2   : String,
     date    : String,
-  })
+})
 
 
   module.exports = mongoose.model('Matchdate', matchdateSchema);
