@@ -145,19 +145,19 @@
                                 </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="container comments border">
-                    <div class="create-comment">
-                        <% if (user) { %>
-                            <form class="comment-form" id="add-content-form" method="POST"
-                                action="/liverpools/<%= liverpool._id %>/comments">
-                                <textarea placeholder=" your comment.." class="form-control" name="content"
-                                    required></textarea>
-                                <input class="btn btn-primary" type="submit" value="Comment">
-                            </form>
-                    </div>
-                    <% } %>
+
+                    <div class="container comments border">
+                        <div class="create-comment">
+                            <% if (user) { %>
+                                <form class="comment-form" id="add-content-form" method="POST"
+                                    action="/liverpools/<%= liverpool._id %>/comments">
+                                    <textarea placeholder=" your comment.." class="form-control" name="content"
+                                        required></textarea>
+                                    <input class="btn btn-primary" type="submit" value="Comment">
+                                </form>
+                                <% } %>
+                        </div>
                         <div class="user-comments">
                             <% if (liverpool.comments.length) { %>
 
@@ -220,6 +220,7 @@
                         <% if (user && liverpool.comments.length> 2) { %>
                             <p class="scroll">Scroll for more comments</p>
                             <% } %>
+                    </div>
                 </div>
 
 
