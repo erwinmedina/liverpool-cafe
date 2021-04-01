@@ -140,88 +140,89 @@
                                                                                             </form>
                                                                                         </div>
                                                                                     </span>
-                                                                                    <% }} %>
                                     </div>
                                 </div>
-                        </div>
-
-
-                        <div class="container comments border">
-                            <div class="create-comment">
-                                <% if (user) { %>
-                                    <form class="comment-form" id="add-content-form" method="POST"
-                                        action="/liverpools/<%= liverpool._id %>/comments">
-                                        <textarea placeholder=" your comment.." class="form-control" name="content"
-                                            required></textarea>
-                                        <input class="btn btn-primary" type="submit" value="Comment">
-                                    </form>
-                                    <% } %>
-                            </div>
-                            <div class="user-comments">
-                                <% if (liverpool.comments.length) { %>
-
-                                    <div class="comments-box container overflow-auto">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr class="table-header">
-                                                    <th></th>
-                                                    <th>Comments</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="overflow-auto">
-                                                <% liverpool.comments.forEach(function(c) { %>
-                                                    <tr class="comment-row">
-                                                        <td class="user avatar">
-                                                            <p class="username">
-                                                                <img class="avatar-image" src="<%= c.userAvatar %>" />
-                                                                <%= c.userName.split(" ")[0] %>
-                                                    </p>
-                                                    <p class=" datetime">
-                                                                    Created:
-                                                                    <%= c.createdAt.toLocaleString() %>
-                                                            </p>
-                                                            <% if (c.createdAt < c.updatedAt) { %>
-                                                                <p class="updated-datetime">
-                                                                    Updated:
-                                                                    <%= c.updatedAt.toLocaleString() %>
-                                                                </p>
-                                                                <% } %>
-                                                        </td>
-                                                        <td class="user-comment">
-                                                            <form action="/comments/<%= c._id %>?_method=PUT"
-                                                                method="POST">
-                                                                <p id="userComment">
-                                                                    <%= c.content %>
-                                                                </p>
-                                                            </form>
-                                                        </td>
-
-                                                        <td class="deleteEdit">
-                                                            <% if (user && user._id.equals(c.user)) { %>
-                                                                <form id="deleteForm"
-                                                                    action="/comments/<%= c._id %>?_method=DELETE"
-                                                                    method="POST">
-                                                                    <button class="btn btn-sm btn-danger"
-                                                                        type="submit">X</button>
-                                                                </form>
-                                                                <button class="btn btn-sm btn-primary edit"
-                                                                    id="edit">Edit</button>
-                                                                <% } %>
-                                                        </td>
-                                                    </tr>
-                                                    <% }); %>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <% } %>
-                            </div>
-
-                            <% if (user && liverpool.comments.length> 2) { %>
-                                <p class="scroll">Scroll for more comments</p>
-                                <% } %>
+                                <% }} %>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="container comments border">
+                    <div class="create-comment">
+                        <% if (user) { %>
+                            <form class="comment-form" id="add-content-form" method="POST"
+                                action="/liverpools/<%= liverpool._id %>/comments">
+                                <textarea placeholder=" your comment.." class="form-control" name="content"
+                                    required></textarea>
+                                <input class="btn btn-primary" type="submit" value="Comment">
+                            </form>
+                            <% } %>
+                    </div>
+                    <div class="user-comments">
+                        <% if (liverpool.comments.length) { %>
+
+                            <div class="comments-box container overflow-auto">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="table-header">
+                                            <th></th>
+                                            <th>Comments</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="overflow-auto">
+                                        <% liverpool.comments.forEach(function(c) { %>
+                                            <tr class="comment-row">
+                                                <td class="user avatar">
+                                                    <p class="username">
+                                                        <img class="avatar-image" src="<%= c.userAvatar %>" />
+                                                        <%= c.userName.split(" ")[0] %>
+                                                    </p>
+                                                    <p class=" datetime">
+                                                            Created:
+                                                            <%= c.createdAt.toLocaleString() %>
+                                                    </p>
+                                                    <% if (c.createdAt < c.updatedAt) { %>
+                                                        <p class="updated-datetime">
+                                                            Updated:
+                                                            <%= c.updatedAt.toLocaleString() %>
+                                                        </p>
+                                                        <% } %>
+                                                </td>
+                                                <td class="user-comment">
+                                                    <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                                                        <p id="userComment">
+                                                            <%= c.content %>
+                                                        </p>
+                                                    </form>
+                                                </td>
+
+                                                <td class="deleteEdit">
+                                                    <% if (user && user._id.equals(c.user)) { %>
+                                                        <form id="deleteForm"
+                                                            action="/comments/<%= c._id %>?_method=DELETE"
+                                                            method="POST">
+                                                            <button class="btn btn-sm btn-danger"
+                                                                type="submit">X</button>
+                                                        </form>
+                                                        <button class="btn btn-sm btn-primary edit"
+                                                            id="edit">Edit</button>
+                                                        <% } %>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% } %>
+                    </div>
+
+                    <% if (user && liverpool.comments.length> 2) { %>
+                        <p class="scroll">Scroll for more comments</p>
+                        <% } %>
+                </div>
+            </div>
 
 
     </body>
