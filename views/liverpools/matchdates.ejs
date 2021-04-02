@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/views-index.css' />
     <link rel='stylesheet' href='/stylesheets/liverpools-index.css' />
     <link rel='stylesheet' href='/stylesheets/liverpools-match.css' />
+    <script defer src="/javascripts/matchdates.js"></script>
 
 </head>
 
@@ -21,19 +22,19 @@
                         MATCHDAY <%= m.matchday %>
                     </div>
                     <div class="container teaminfo">
-                        <div class="container team1 teamElement">
+                        <div id="team1" class="container team1 teamElement">
                             <%= m.team1 %>
                         </div>
-                        <div class="container score1 teamElement">
+                        <div id="score1" class="container score teamElement">
                             <%= m.score1 %>
                         </div>
                         <div class="container vs teamElement">
                             vs
                         </div>
-                        <div class="container score2 teamElement">
+                        <div id="score2" class="container score teamElement">
                             <%= m.score2 %>
                         </div>
-                        <div class="container team2 teamElement">
+                        <div id="team2" class="container team2 teamElement">
                             <%= m.team2 %>
                         </div>
                     </div>

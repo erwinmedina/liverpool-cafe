@@ -80,6 +80,7 @@
                                     </span>
                                 </div>
                             </div>
+
                             <% if (user) { %>
                                 <div class="player-details container">
                                     <div class="title.container container">
@@ -140,13 +141,13 @@
                                                                                             </form>
                                                                                         </div>
                                                                                     </span>
+                                                                                    <% } %>
                                     </div>
                                 </div>
-                                <% }} %>
+                                <% } %>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="container comments border">
                     <div class="create-comment">
@@ -166,9 +167,12 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr class="table-header">
-                                            <th></th>
-                                            <th>Comments</th>
-                                            <th></th>
+                                            <th>
+                                            </th>
+                                            <th>Comments
+                                            </th>
+                                            <th>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="overflow-auto">
@@ -216,15 +220,13 @@
                                 </table>
                             </div>
                             <% } %>
-                    </div>
 
-                    <% if (user && liverpool.comments.length> 2) { %>
-                        <p class="scroll">Scroll for more comments</p>
-                        <% } %>
+                                <% if (user && liverpool.comments.length>2) { %>
+                                    <p class="scroll">Scroll for
+                                        more comments</p>
+                                    <% } %>
+                    </div>
                 </div>
             </div>
-
-
-    </body>
 
 </html>

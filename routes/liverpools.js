@@ -6,7 +6,7 @@ const isLoggedIn        = require('../config/auth');
 
 /* GET users listing. */
 router.get('/', liverpoolsCtrl.index);
-router.get('/favorite', liverpoolsCtrl.favorite);
+router.get('/favorite', isLoggedIn, liverpoolsCtrl.favorite);
 router.get('/matchdates', liverpoolsCtrl.matchdates);
 router.delete('/:id', liverpoolsCtrl.delete);
 router.get('/:id', liverpoolsCtrl.show);

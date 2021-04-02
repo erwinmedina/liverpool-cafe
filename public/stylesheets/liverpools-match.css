@@ -34,3 +34,7 @@ body {
 .date {
   text-align: center;
 }
+
+.score {
+  font-size: 40px;
+}
