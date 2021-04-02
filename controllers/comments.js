@@ -12,7 +12,7 @@ function create(req, res) {
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
 
-        liverpool.comments.push(req.body);
+        liverpool.comments.unshift(req.body);
         liverpool.save(function(err) {
             res.redirect(`/liverpools/${liverpool._id}`);
         });
